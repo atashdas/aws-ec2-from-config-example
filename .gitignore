@@ -36,6 +36,9 @@ terraform.rc
 # Ignore TF lock files
 *.terraform.lock.hcl
 
+# Ignore TF plan output
+*plan.out
+
 # Ignore MACOS files
 *.DS_Store
 
