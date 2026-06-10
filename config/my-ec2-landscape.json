@@ -1,0 +1,177 @@
+{
+    "landscape": {
+        "global": {
+            "tags": {
+                "Group": "Spatial and Network",
+                "Division": "Digital",
+                "BusinessUnit": "Foundation and Network",
+                "Department": "Foundation, Network Platform and Services",
+                "TechnicalTeam": "GIS",
+                "BusinessOwner": "Darren Miller",
+                "Project": "GIS on HANA",
+                "Role": "PRD",
+                "Environment": "prod",
+                "TechnicalOwner": "adas@test.com"
+            }
+        },
+        "instances": {
+            "defaults": {
+                "os_type": "windows",
+                "instance_type": "r6i.4xlarge",
+                "ami_id": "ami-0d51758a4bd2afc6c",
+                "keypair": "kpadas",
+                "instance_profile": "cloud-IAMProfile-6MSV2PC9B6M1",
+                "kms_key_id": "544d73e9-888b-4e0a-b5eb-5c87a0167eb8",
+                "subnet_id": "subnet-0fabde33d1a0f7e3e",
+                "security_group_list": [
+                    "sg-097f3ecc76b275eba"
+                ],
+                "is_system_status_check": true,
+                "is_instance_status_check": true,
+                "alarm_actions": [
+                    "arn:aws:sns:ap-southeast-2:291070449494:ad-test"
+                ],
+                "disk": {
+                    "volume_size": 100,
+                    "volume_type": "gp3",
+                    "iops": 16000,
+                    "throughput": 1000
+                }
+            },
+            "servers": {
+                "pgisapp00": {
+                    "tags": {
+                        "Application": "GIS Application Server",
+                        "Type": "Compute"
+                    },
+                    "private_ip": "172.31.176.101",
+                    "secondary_ip_list": [
+                        "172.31.176.102",
+                        "172.31.176.103"
+                    ],
+                    "security_group_list": [
+                        "sg-097f3ecc76b275xyz"
+                    ],
+                    "instance_type": "m7i.2xlarge",
+                    "disks": {
+                        "C": {
+                            "name": "C-Drive",
+                            "device_name": "/dev/sda1"
+                        },
+                        "D": {
+                            "name": "D-Drive",
+                            "device_name": "/dev/xvdf"
+                        },
+                        "S": {
+                            "name": "S-Drive",
+                            "device_name": "/dev/xvdg",
+                            "iops": 5000,
+                            "throughput": 500,
+                            "volume_size": 64
+                        }
+                    }
+                },
+                "pgismtr00": {
+                    "tags": {
+                        "Application": "GIS Monitor",
+                        "Type": "Compute"
+                    },
+                    "security_group_list": [
+                        "sg-097f3ecc76b275def"
+                    ],
+                    "is_instance_status_check": false,
+                    "disks": {
+                        "C": {
+                            "name": "C-Drive",
+                            "device_name": "/dev/sda1"
+                        },
+                        "D": {
+                            "name": "D-Drive",
+                            "device_name": "/dev/xvdf"
+                        },
+                        "E": {
+                            "name": "E-Drive",
+                            "device_name": "/dev/xvdg"
+                        },
+                        "S": {
+                            "name": "S-Drive",
+                            "device_name": "/dev/xvdh",
+                            "volume_size": 256
+                        }
+                    }
+                },
+                "pgisdb00": {
+                    "type": "linux",
+                    "ami_id": "ami-0963fb6bf3306ed16",
+                    "tags": {
+                        "Application": "GIS DB Server",
+                        "Type": "Compute"
+                    },
+                    "subnet_id": "subnet-05bf6feba12f0fc51",
+                    "private_ip": "172.31.176.201",
+                    "secondary_ip_list": [
+                        "172.31.176.202",
+                        "172.31.176.203"
+                    ],
+                    "security_group_list": [
+                        "sg-097f3ecc96c275abc"
+                    ],
+                    "instance_type": "r7i.32xlarge",
+                    "is_system_status_check": false,
+                    "is_instance_status_check": false,
+                    "disks": {
+                        "root": {
+                            "name": "root disk",
+                            "device_name": "/dev/sda1",
+                            "volume_size": 20,
+                            "iops": 3000,
+                            "throughput": 125
+                        },
+                        "usr_sap": {
+                            "name": "SAP disk",
+                            "device_name": "/dev/xvdf",
+                            "iops": 3000,
+                            "throughput": 125
+                        },
+                        "hana_shared": {
+                            "name": "HANA shared disk",
+                            "device_name": "/dev/xvdg",
+                            "volume_size": 50,
+                            "iops": 3000,
+                            "throughput": 125
+                        },
+                        "hana_data": {
+                            "name": "HANA data disk",
+                            "device_name": "/dev/xvdh",
+                            "volume_size": 500,
+                            "iops": 7500,
+                            "throughput": 750
+                        },
+                        "hana_log": {
+                            "name": "HANA log disk",
+                            "device_name": "/dev/xvdi",
+                            "volume_size": 200,
+                            "iops": 12000,
+                            "throughput": 500
+                        },
+                        "backup": {
+                            "name": "backup disk",
+                            "device_name": "/dev/xvdj",
+                            "volume_type": "st1",
+                            "volume_size": 1024,
+                            "iops": null,
+                            "throughput": null
+                        },
+                        "swap": {
+                            "name": "swap disk",
+                            "device_name": "/dev/xvdk",
+                            "volume_size": 10,
+                            "iops": 3000,
+                            "throughput": 125
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
