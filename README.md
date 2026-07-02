@@ -3,7 +3,7 @@ Launches a fleet of AWS EC2 instances per specifications in a YAML or JSON confi
 
 This clean separation of concerns enable developers or business users to create the specification of the EC2 instances need to be built, and the Platform Engineering team to design and build a generic and optimised Terraform module to build these from the specification. 
 
-This accelerates user onboarding since the users can provision EC2 instances by editing a YAML or JSON file, without needing to learn Terraform syntax or AWS resource model details. Further, if this is implemented in a GitOps pipeline, they can create or update the specification and trigger the build themselves simply with a git pull request of the configuration file within the repository.
+This accelerates user onboarding since the users can provision EC2 instances by editing a YAML or JSON file, without needing to learn Terraform syntax or AWS resource model details. Further, if this is implemented in a GitOps pipeline, they can create or update the specification and trigger the build themselves simply by raising a pull request for review, and merging — triggering the pipeline that applies the updated configuration.
 
 The repository follows the standard configuration-first structure:
 
