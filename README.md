@@ -17,4 +17,4 @@ aws-ec2-from-config-example/
 └── .pre-commit-config.yaml
 ```
 
-The `modules/my-ec2-instance/` directory contains the provider-specific implementation. The `config/` directory contains the operator-facing configuration. The `deploy/` layer wires the two together.
+The `modules/my-ec2-instance/` directory contains the provider-specific implementation. The `config/` directory contains the user-facing configuration. The `deploy/` layer wires the two together.
