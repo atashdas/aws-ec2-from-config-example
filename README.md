@@ -82,6 +82,6 @@ landscape:
             iops: 12000
             throughput: 500
 ```
-The configuration schema above allows defining a server landscape with a fleet of servers and their disk configurations using globally applicable values such as `tags`, instance and disk default attributes in `instances/defaults` that can be overridden at resource instance level as required. 
+The configuration schema above allows defining a server landscape with a fleet of servers and their disk configurations using globally applicable values such as `tags`, instance and disk default attributes in `instances/defaults` that can be overridden at resource level as required. 
 
-This configuration is simple specifically when default attributes are applicable (`pgisapp00`) while also allowing for complex server specifications (`pgisdb00`). It describes instances in terms of their logical attributes — name, compute profile, network placement, and tags — without requiring the operator to understand the full EC2 and EBS resource schemas. Adding a new instance is a matter of appending an entry to the list.
+This configuration is simple specifically when default attributes are applicable (`pgisapp00`) while also allowing for complex server specifications (`pgisdb00`). It describes instances in terms of their logical attributes — name, compute profile, network placement, tags — without requiring the user to understand the full EC2 and EBS resource schemas. Adding a new instance is a matter of appending an entry to the list.
