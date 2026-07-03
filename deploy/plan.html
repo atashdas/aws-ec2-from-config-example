@@ -1,0 +1,996 @@
+<pre>module.ec2.data.template_file.linux_userdata["pgisdb00"]: Reading...
+module.ec2.data.template_file.windows_userdata["pgismtr00"]: Reading...
+module.ec2.data.template_file.windows_userdata["pgisapp00"]: Reading...
+module.ec2.data.template_file.linux_userdata["pgisdb00"]: Read complete after 0s [id=211540e3a7129782d88dc52d627ca7151340c39f30b56e00d21d611faab353dd]
+module.ec2.data.template_file.windows_userdata["pgismtr00"]: Read complete after 0s [id=7dda9eb494ec1de8b97c75904fe777443c99e49b1c82bb6d1c6e515d316664c4]
+module.ec2.data.template_file.windows_userdata["pgisapp00"]: Read complete after 0s [id=dbf378954381e26f843a7d2c514689835ca1281af91637c1e4dbe79cdb766cde]
+module.ec2.data.aws_region.current: Reading...
+module.ec2.data.aws_region.current: Read complete after 0s [id=ap-southeast-2]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+ <= read (data resources)
+
+Terraform will perform the following actions:
+
+  # module.ec2.data.aws_network_interface.this["pgisapp00"] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_network_interface" "this" {
+      + arn                   = (known after apply)
+      + association           = (known after apply)
+      + attachment            = (known after apply)
+      + availability_zone     = (known after apply)
+      + description           = (known after apply)
+      + ena_srd_specification = (known after apply)
+      + id                    = (known after apply)
+      + interface_type        = (known after apply)
+      + ipv6_addresses        = (known after apply)
+      + mac_address           = (known after apply)
+      + outpost_arn           = (known after apply)
+      + owner_id              = (known after apply)
+      + private_dns_name      = (known after apply)
+      + private_ip            = (known after apply)
+      + private_ips           = (known after apply)
+      + region                = (known after apply)
+      + requester_id          = (known after apply)
+      + security_groups       = (known after apply)
+      + subnet_id             = (known after apply)
+      + tags                  = (known after apply)
+      + vpc_id                = (known after apply)
+    }
+
+  # module.ec2.data.aws_network_interface.this["pgisdb00"] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_network_interface" "this" {
+      + arn                   = (known after apply)
+      + association           = (known after apply)
+      + attachment            = (known after apply)
+      + availability_zone     = (known after apply)
+      + description           = (known after apply)
+      + ena_srd_specification = (known after apply)
+      + id                    = (known after apply)
+      + interface_type        = (known after apply)
+      + ipv6_addresses        = (known after apply)
+      + mac_address           = (known after apply)
+      + outpost_arn           = (known after apply)
+      + owner_id              = (known after apply)
+      + private_dns_name      = (known after apply)
+      + private_ip            = (known after apply)
+      + private_ips           = (known after apply)
+      + region                = (known after apply)
+      + requester_id          = (known after apply)
+      + security_groups       = (known after apply)
+      + subnet_id             = (known after apply)
+      + tags                  = (known after apply)
+      + vpc_id                = (known after apply)
+    }
+
+  # module.ec2.data.aws_network_interface.this["pgismtr00"] will be read during apply
+  # (config refers to values not yet known)
+ <= data "aws_network_interface" "this" {
+      + arn                   = (known after apply)
+      + association           = (known after apply)
+      + attachment            = (known after apply)
+      + availability_zone     = (known after apply)
+      + description           = (known after apply)
+      + ena_srd_specification = (known after apply)
+      + id                    = (known after apply)
+      + interface_type        = (known after apply)
+      + ipv6_addresses        = (known after apply)
+      + mac_address           = (known after apply)
+      + outpost_arn           = (known after apply)
+      + owner_id              = (known after apply)
+      + private_dns_name      = (known after apply)
+      + private_ip            = (known after apply)
+      + private_ips           = (known after apply)
+      + region                = (known after apply)
+      + requester_id          = (known after apply)
+      + security_groups       = (known after apply)
+      + subnet_id             = (known after apply)
+      + tags                  = (known after apply)
+      + vpc_id                = (known after apply)
+    }
+
+  # module.ec2.aws_cloudwatch_metric_alarm.instance_status_check["pgisapp00"] will be created
+  + resource "aws_cloudwatch_metric_alarm" "instance_status_check" {
+      + actions_enabled                       = true
+      + alarm_actions                         = [
+          + "arn:aws:automate:ap-southeast-2:ec2:reboot",
+          + "arn:aws:sns:ap-southeast-2:291070449494:ad-test",
+        ]
+      + alarm_description                     = "Monitor EC2 instance status check"
+      + alarm_name                            = (known after apply)
+      + arn                                   = (known after apply)
+      + comparison_operator                   = "GreaterThanThreshold"
+      + dimensions                            = (known after apply)
+      + evaluate_low_sample_count_percentiles = (known after apply)
+      + evaluation_periods                    = 5
+      + id                                    = (known after apply)
+      + metric_name                           = "StatusCheckFailed_Instance"
+      + namespace                             = "AWS/EC2"
+      + period                                = 60
+      + region                                = "ap-southeast-2"
+      + statistic                             = "Maximum"
+      + tags_all                              = (known after apply)
+      + threshold                             = 5
+      + treat_missing_data                    = "missing"
+    }
+
+  # module.ec2.aws_cloudwatch_metric_alarm.system_status_check["pgisapp00"] will be created
+  + resource "aws_cloudwatch_metric_alarm" "system_status_check" {
+      + actions_enabled                       = true
+      + alarm_actions                         = [
+          + "arn:aws:automate:ap-southeast-2:ec2:recover",
+          + "arn:aws:sns:ap-southeast-2:291070449494:ad-test",
+        ]
+      + alarm_description                     = "Monitor EC2 system status check"
+      + alarm_name                            = (known after apply)
+      + arn                                   = (known after apply)
+      + comparison_operator                   = "GreaterThanThreshold"
+      + dimensions                            = (known after apply)
+      + evaluate_low_sample_count_percentiles = (known after apply)
+      + evaluation_periods                    = 5
+      + id                                    = (known after apply)
+      + metric_name                           = "StatusCheckFailed_System"
+      + namespace                             = "AWS/EC2"
+      + period                                = 60
+      + region                                = "ap-southeast-2"
+      + statistic                             = "Maximum"
+      + tags_all                              = (known after apply)
+      + threshold                             = 5
+      + treat_missing_data                    = "missing"
+    }
+
+  # module.ec2.aws_cloudwatch_metric_alarm.system_status_check["pgismtr00"] will be created
+  + resource "aws_cloudwatch_metric_alarm" "system_status_check" {
+      + actions_enabled                       = true
+      + alarm_actions                         = [
+          + "arn:aws:automate:ap-southeast-2:ec2:recover",
+          + "arn:aws:sns:ap-southeast-2:291070449494:ad-test",
+        ]
+      + alarm_description                     = "Monitor EC2 system status check"
+      + alarm_name                            = (known after apply)
+      + arn                                   = (known after apply)
+      + comparison_operator                   = "GreaterThanThreshold"
+      + dimensions                            = (known after apply)
+      + evaluate_low_sample_count_percentiles = (known after apply)
+      + evaluation_periods                    = 5
+      + id                                    = (known after apply)
+      + metric_name                           = "StatusCheckFailed_System"
+      + namespace                             = "AWS/EC2"
+      + period                                = 60
+      + region                                = "ap-southeast-2"
+      + statistic                             = "Maximum"
+      + tags_all                              = (known after apply)
+      + threshold                             = 5
+      + treat_missing_data                    = "missing"
+    }
+
+  # module.ec2.aws_instance.this["pgisapp00"] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-0d51758a4bd2afc6c"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = true
+      + ebs_optimized                        = true
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "cloud-IAMProfile-6MSV2PC9B6M1"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "m7i.2xlarge"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = true
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = "172.31.176.101"
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "ap-southeast-2"
+      + secondary_private_ips                = [
+          + "172.31.176.102",
+          + "172.31.176.103",
+        ]
+      + security_groups                      = [
+          + "sg-097f3ecc76b275eba",
+          + "sg-097f3ecc76b275xyz",
+        ]
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0fabde33d1a0f7e3e"
+      + tags                                 = {
+          + "Application"    = "GIS Application Server"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgisapp00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tags_all                             = {
+          + "Application"    = "GIS Application Server"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgisapp00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            <powershell>
+            # Rename Machine
+            Rename-Computer -NewName "pgisapp00" -Force;
+            # Restart machine
+            shutdown -r -t 10;
+            </powershell>
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/sda1"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Application Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisapp00 C-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdf"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Application Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisapp00 D-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdg"
+          + encrypted             = true
+          + iops                  = 5000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Application Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisapp00 S-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 500
+          + volume_id             = (known after apply)
+          + volume_size           = 64
+          + volume_type           = "gp3"
+        }
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.ec2.aws_instance.this["pgisdb00"] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-0963fb6bf3306ed16"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = true
+      + ebs_optimized                        = true
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "cloud-IAMProfile-6MSV2PC9B6M1"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "r7i.32xlarge"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = true
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = "172.31.176.201"
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "ap-southeast-2"
+      + secondary_private_ips                = [
+          + "172.31.176.202",
+          + "172.31.176.203",
+        ]
+      + security_groups                      = [
+          + "sg-097f3ecc76b275eba",
+          + "sg-097f3ecc96c275abc",
+        ]
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-05bf6feba12f0fc51"
+      + tags                                 = {
+          + "Application"    = "GIS DB Server"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgisdb00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tags_all                             = {
+          + "Application"    = "GIS DB Server"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgisdb00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            #!/bin/bash
+            hostnamectl set-hostname "pgisdb00"
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/sda1"
+          + encrypted             = true
+          + iops                  = 3000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 root disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 125
+          + volume_id             = (known after apply)
+          + volume_size           = 20
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdf"
+          + encrypted             = true
+          + iops                  = 3000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 SAP disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 125
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdg"
+          + encrypted             = true
+          + iops                  = 3000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 HANA shared disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 125
+          + volume_id             = (known after apply)
+          + volume_size           = 50
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdh"
+          + encrypted             = true
+          + iops                  = 7500
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 HANA data disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 750
+          + volume_id             = (known after apply)
+          + volume_size           = 500
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdi"
+          + encrypted             = true
+          + iops                  = 12000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 HANA log disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 500
+          + volume_id             = (known after apply)
+          + volume_size           = 200
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdj"
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 backup disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = 1024
+          + volume_type           = "st1"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdk"
+          + encrypted             = true
+          + iops                  = 3000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS DB Server"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgisdb00 swap disk"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 125
+          + volume_id             = (known after apply)
+          + volume_size           = 10
+          + volume_type           = "gp3"
+        }
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+  # module.ec2.aws_instance.this["pgismtr00"] will be created
+  + resource "aws_instance" "this" {
+      + ami                                  = "ami-0d51758a4bd2afc6c"
+      + arn                                  = (known after apply)
+      + associate_public_ip_address          = (known after apply)
+      + availability_zone                    = (known after apply)
+      + disable_api_stop                     = (known after apply)
+      + disable_api_termination              = true
+      + ebs_optimized                        = true
+      + enable_primary_ipv6                  = (known after apply)
+      + force_destroy                        = false
+      + get_password_data                    = false
+      + host_id                              = (known after apply)
+      + host_resource_group_arn              = (known after apply)
+      + iam_instance_profile                 = "cloud-IAMProfile-6MSV2PC9B6M1"
+      + id                                   = (known after apply)
+      + instance_initiated_shutdown_behavior = (known after apply)
+      + instance_lifecycle                   = (known after apply)
+      + instance_state                       = (known after apply)
+      + instance_type                        = "r6i.4xlarge"
+      + ipv6_address_count                   = (known after apply)
+      + ipv6_addresses                       = (known after apply)
+      + key_name                             = (known after apply)
+      + monitoring                           = true
+      + outpost_arn                          = (known after apply)
+      + password_data                        = (known after apply)
+      + placement_group                      = (known after apply)
+      + placement_group_id                   = (known after apply)
+      + placement_partition_number           = (known after apply)
+      + primary_network_interface_id         = (known after apply)
+      + private_dns                          = (known after apply)
+      + private_ip                           = (known after apply)
+      + public_dns                           = (known after apply)
+      + public_ip                            = (known after apply)
+      + region                               = "ap-southeast-2"
+      + secondary_private_ips                = (known after apply)
+      + security_groups                      = [
+          + "sg-097f3ecc76b275def",
+          + "sg-097f3ecc76b275eba",
+        ]
+      + source_dest_check                    = true
+      + spot_instance_request_id             = (known after apply)
+      + subnet_id                            = "subnet-0fabde33d1a0f7e3e"
+      + tags                                 = {
+          + "Application"    = "GIS Monitor"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgismtr00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tags_all                             = {
+          + "Application"    = "GIS Monitor"
+          + "BusinessOwner"  = "Darren Miller"
+          + "BusinessUnit"   = "Foundation and Network"
+          + "Department"     = "Foundation, Network Platform and Services"
+          + "Division"       = "Digital"
+          + "Environment"    = "prod"
+          + "Group"          = "Spatial and Network"
+          + "Name"           = "pgismtr00"
+          + "Project"        = "GIS on HANA"
+          + "Role"           = "PRD"
+          + "TechnicalOwner" = "adas@test.com"
+          + "TechnicalTeam"  = "GIS"
+          + "Type"           = "Compute"
+        }
+      + tenancy                              = (known after apply)
+      + user_data                            = <<-EOT
+            <powershell>
+            # Rename Machine
+            Rename-Computer -NewName "pgismtr00" -Force;
+            # Restart machine
+            shutdown -r -t 10;
+            </powershell>
+        EOT
+      + user_data_base64                     = (known after apply)
+      + user_data_replace_on_change          = false
+      + vpc_security_group_ids               = (known after apply)
+
+      + capacity_reservation_specification (known after apply)
+
+      + cpu_options (known after apply)
+
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/sda1"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Monitor"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgismtr00 C-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdf"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Monitor"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgismtr00 D-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdg"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Monitor"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgismtr00 E-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 100
+          + volume_type           = "gp3"
+        }
+      + ebs_block_device {
+          + delete_on_termination = true
+          + device_name           = "/dev/xvdh"
+          + encrypted             = true
+          + iops                  = 16000
+          + kms_key_id            = "544d73e9-888b-4e0a-b5eb-5c87a0167eb8"
+          + snapshot_id           = (known after apply)
+          + tags                  = {
+              + "Application"    = "GIS Monitor"
+              + "BusinessOwner"  = "Darren Miller"
+              + "BusinessUnit"   = "Foundation and Network"
+              + "Department"     = "Foundation, Network Platform and Services"
+              + "Division"       = "Digital"
+              + "Environment"    = "prod"
+              + "Group"          = "Spatial and Network"
+              + "Name"           = "pgismtr00 S-Drive"
+              + "Project"        = "GIS on HANA"
+              + "Role"           = "PRD"
+              + "TechnicalOwner" = "adas@test.com"
+              + "TechnicalTeam"  = "GIS"
+              + "Type"           = "Compute"
+            }
+          + tags_all              = (known after apply)
+          + throughput            = 1000
+          + volume_id             = (known after apply)
+          + volume_size           = 256
+          + volume_type           = "gp3"
+        }
+
+      + enclave_options (known after apply)
+
+      + ephemeral_block_device (known after apply)
+
+      + instance_market_options (known after apply)
+
+      + maintenance_options (known after apply)
+
+      + metadata_options {
+          + http_endpoint               = "enabled"
+          + http_protocol_ipv6          = "disabled"
+          + http_put_response_hop_limit = (known after apply)
+          + http_tokens                 = "required"
+          + instance_metadata_tags      = (known after apply)
+        }
+
+      + network_interface (known after apply)
+
+      + primary_network_interface (known after apply)
+
+      + private_dns_name_options (known after apply)
+
+      + root_block_device {
+          + delete_on_termination = true
+          + device_name           = (known after apply)
+          + encrypted             = true
+          + iops                  = (known after apply)
+          + kms_key_id            = (known after apply)
+          + tags_all              = (known after apply)
+          + throughput            = (known after apply)
+          + volume_id             = (known after apply)
+          + volume_size           = (known after apply)
+          + volume_type           = (known after apply)
+        }
+
+      + secondary_network_interface (known after apply)
+    }
+
+Plan: 6 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + ec2_details = [
+      + {
+          + pgisapp00 = {
+              + arn                          = (known after apply)
+              + id                           = (known after apply)
+              + instance_state               = (known after apply)
+              + instance_status_check        = (known after apply)
+              + primary_network_interface_id = (known after apply)
+              + private_ips                  = (known after apply)
+              + public_ip                    = (known after apply)
+              + system_status_check          = (known after apply)
+            }
+        },
+      + {
+          + pgisdb00 = {
+              + arn                          = (known after apply)
+              + id                           = (known after apply)
+              + instance_state               = (known after apply)
+              + instance_status_check        = null
+              + primary_network_interface_id = (known after apply)
+              + private_ips                  = (known after apply)
+              + public_ip                    = (known after apply)
+              + system_status_check          = null
+            }
+        },
+      + {
+          + pgismtr00 = {
+              + arn                          = (known after apply)
+              + id                           = (known after apply)
+              + instance_state               = (known after apply)
+              + instance_status_check        = null
+              + primary_network_interface_id = (known after apply)
+              + private_ips                  = (known after apply)
+              + public_ip                    = (known after apply)
+              + system_status_check          = (known after apply)
+            }
+        },
+    ]
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.</pre>
